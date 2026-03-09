@@ -8,7 +8,7 @@ No configuration needed. Install and forget.
 
 ## Why
 
-Browsers don't always infer text direction correctly, especially in chat interfaces and rich text editors. FlipIT watches the page in real time and fixes alignment the moment Hebrew appears — whether you're typing or reading a response.
+Browsers don't always infer text direction correctly, especially in chat interfaces and rich text editors. FlipIT watches the page in real time and fixes alignment the moment Hebrew appears - whether you're typing or reading a response.
 
 Works everywhere: Claude, ChatGPT, SharePoint, Notion, Gmail, and any other site.
 
