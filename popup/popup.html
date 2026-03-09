@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>FlipIT</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="header">
+    <span class="logo">↰</span>
+    <div>
+      <div class="name">FlipIT</div>
+      <div class="sub">יישור אוטומטי לעברית</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <span class="label">הפעל בדף זה</span>
+    <label class="switch">
+      <input type="checkbox" id="toggle" checked />
+      <span class="track"><span class="thumb"></span></span>
+    </label>
+  </div>
+
+  <div class="status" id="status">● פעיל</div>
+
+  <button id="rescan">סרוק מחדש</button>
+
+  <div class="sites">
+    <span>Claude</span><span>ChatGPT</span><span>SharePoint</span><span>везде</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
