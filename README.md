@@ -1,4 +1,4 @@
-# FlipIT — Hebrew RTL Chrome Extension
+# FlipIT - Hebrew RTL Chrome Extension
 
 A lightweight Chrome extension that automatically detects Hebrew text and aligns it right-to-left on any website.
 
