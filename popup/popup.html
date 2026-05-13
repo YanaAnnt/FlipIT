@@ -6,28 +6,60 @@
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
+
+  <!-- Header -->
   <div class="header">
-    <span class="logo">↰</span>
-    <div>
+    <img src="../icons/icon48.png" class="logo-img" alt="FlipIT" />
+    <div class="header-text">
       <div class="name">FlipIT</div>
       <div class="sub">יישור אוטומטי לעברית</div>
     </div>
+    <div class="status-dot" id="statusDot"></div>
   </div>
 
-  <div class="row">
-    <span class="label">הפעל בדף זה</span>
-    <label class="switch">
-      <input type="checkbox" id="toggle" checked />
-      <span class="track"><span class="thumb"></span></span>
-    </label>
+  <!-- Toggle: enable extension -->
+  <div class="section">
+    <div class="row">
+      <div class="row-text">
+        <span class="label">הפעלת התוסף</span>
+        <span class="hint" id="statusHint">פעיל בדף זה</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle" checked />
+        <span class="track"><span class="thumb"></span></span>
+      </label>
+    </div>
   </div>
 
-  <div class="status" id="status">● פעיל</div>
+  <!-- Toggle: protect math -->
+  <div class="section">
+    <div class="row">
+      <div class="row-text">
+        <span class="label">שמור על כיוון מתמטיקה</span>
+        <span class="hint">נוסחאות ומספרים יישארו משמאל לימין</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="mathToggle" checked />
+        <span class="track"><span class="thumb"></span></span>
+      </label>
+    </div>
+  </div>
 
-  <button id="rescan">סרוק מחדש</button>
+  <!-- Reload button -->
+  <div class="section">
+    <button id="reload">
+      <span class="btn-icon">↺</span>
+      רענן דף והפעל מחדש
+    </button>
+  </div>
 
-  <div class="sites">
-    <span>Claude</span><span>ChatGPT</span><span>SharePoint</span><span>везде</span>
+  <!-- About -->
+  <div class="about">
+    <p>
+      FlipIT מזהה אוטומטית טקסט עברי ומיישר אותו מימין לשמאל — בכל אתר,
+      כולל Claude, ChatGPT ו־SharePoint. תוכן מעורב עברית־אנגלית נשאר מסודר.
+    </p>
+    <div class="version">v1.2.1</div>
   </div>
 
   <script src="popup.js"></script>

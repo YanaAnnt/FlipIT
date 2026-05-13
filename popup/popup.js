@@ -1,10 +1,15 @@
-const toggle = document.getElementById('toggle');
-const status = document.getElementById('status');
-const rescan = document.getElementById('rescan');
+const toggle     = document.getElementById('toggle');
+const mathToggle = document.getElementById('mathToggle');
+const statusHint = document.getElementById('statusHint');
+const statusDot  = document.getElementById('statusDot');
+const reloadBtn  = document.getElementById('reload');
 
-chrome.storage.local.get('enabled', (r) => {
-  const on = r.enabled !== false;
-  toggle.checked = on;
+// Load saved settings
+chrome.storage.local.get(['enabled', 'protectMath'], (r) => {
+  const on   = r.enabled !== false;
+  const math = r.protectMath !== false;
+  toggle.checked     = on;
+  mathToggle.checked = math;
   updateStatus(on);
 });
 
@@ -15,19 +20,25 @@ toggle.addEventListener('change', () => {
   sendToTab(on ? 'enable' : 'disable');
 });
 
-rescan.addEventListener('click', () => {
-  sendToTab('rescan');
-  rescan.textContent = '✓ בוצע';
-  setTimeout(() => { rescan.textContent = 'סרוק מחדש'; }, 1400);
+mathToggle.addEventListener('change', () => {
+  chrome.storage.local.set({ protectMath: mathToggle.checked });
+  sendToTab('setMath', { protectMath: mathToggle.checked });
+});
+
+reloadBtn.addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+    if (tab) chrome.tabs.reload(tab.id);
+  });
 });
 
 function updateStatus(on) {
-  status.textContent = on ? '● פעיל' : '○ כבוי';
-  status.className = on ? 'status' : 'status off';
+  statusHint.textContent = on ? 'פעיל בדף זה' : 'כבוי';
+  statusHint.style.color = on ? '#7c3aed' : '#ef4444';
+  statusDot.className    = on ? 'status-dot' : 'status-dot off';
 }
 
-function sendToTab(action) {
+function sendToTab(action, data = {}) {
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-    if (tab) chrome.tabs.sendMessage(tab.id, { action });
+    if (tab) chrome.tabs.sendMessage(tab.id, { action, ...data });
   });
 }
